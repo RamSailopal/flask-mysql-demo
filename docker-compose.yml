@@ -1,0 +1,45 @@
+version: "2"
+services:
+  testmysql:
+    image: mysql:8
+    container_name: "flask_testmysql"
+    networks:
+      - flask
+    volumes:
+      - "$PWD/mysql:/home/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${flaskpass}
+
+  flask-back:
+    image: ubuntu:focal
+    container_name: "flask_flask-back"
+    networks:
+      - flask
+    volumes:
+      - "$PWD/flask-back:/home/flask-back"
+    ports:
+      - 5000:5000
+    environment:
+       FLASKPASS: ${flaskpass}
+       FLASKDAT: ${flaskdatabase}
+       FLASKUSER: ${flaskuser}
+       MYSQLHOST: ${mysqlhost}
+    entrypoint:
+      - "/home/flask-back/entrypoint.sh"
+
+  flask-front:
+    image: ubuntu:focal
+    container_name: "flask_flask-front"
+    networks:
+      - flask
+    volumes:
+      - "$PWD/flask-front:/home/flask-front"
+    ports:
+      - 5001:5000
+    entrypoint:
+      - "/home/flask-front/entrypoint.sh"
+
+
+networks:
+    flask:
+
