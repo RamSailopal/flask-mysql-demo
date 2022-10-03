@@ -1,4 +1,4 @@
-# flask-myslq-demo
+# flask-mysql-demo
 
 A simple demo of the Python Flask framework using mysql as a backend
 
