@@ -5,6 +5,9 @@ A simple demo of the Python Flask framework using mysql as a backend
 Creates a simple api for adding users to a mysql table
 
 
+![Alt text](flask.JPG?raw=true "view")
+
+
 # Provisioning
 
     git clone https://github.com/RamSailopal/flask-mysql-demo.git
